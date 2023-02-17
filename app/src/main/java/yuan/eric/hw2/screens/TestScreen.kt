@@ -34,13 +34,24 @@ fun TestScreen(
             ContactList -> ContactList(contacts = contacts) { id ->
                 viewModel.switchTo(ContactScreen(id))
             }
-            AddressList -> AddressList(addresses = addresses)
+            AddressList -> AddressList(addresses = addresses) { id ->
+                viewModel.switchTo(AddressScreen(id))
+            }
             is ContactScreen -> ContactDisplay(
                 contactId = screen.id,
                 fetchContactWithAddresses = { id ->
                     viewModel.getContactWithAddresses(id)
                 }
             )
+            is AddressScreen -> AddressDisplay(
+                addressId = screen.id,
+                fetchAddress = { id ->
+                    viewModel.getAddress(id)
+                }
+            )
+//            is ContactScreen -> AddressDisplay(
+//
+//                    )
         }
     }
 }

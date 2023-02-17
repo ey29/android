@@ -7,6 +7,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import yuan.eric.hw2.components.SimpleText
+import yuan.eric.hw2.repository.AddressDto
 import yuan.eric.hw2.repository.ContactWithAddressesDto
 
 @Composable
@@ -17,7 +18,6 @@ fun ContactDisplay(
     var contactWithAddressesDto by remember { mutableStateOf<ContactWithAddressesDto?>(null) }
 
     LaunchedEffect(key1 = contactId) {
-        // starts a coroutine to fetch the rating
         contactWithAddressesDto = fetchContactWithAddresses(contactId)
     }
 
@@ -31,6 +31,7 @@ fun ContactDisplay(
             
             Email Address: ${contactWithAddresses.contact.email}
         """.trimIndent())
+
         contactWithAddresses.addresses.forEach { address ->
             SimpleText(text = "Address: ${address.type}")
         }

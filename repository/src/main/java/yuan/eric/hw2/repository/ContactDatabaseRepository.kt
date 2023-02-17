@@ -21,6 +21,9 @@ class ContactDatabaseRepository(context: Context): ContactRepository {
     override suspend fun getContactWithAddresses(id: String): ContactWithAddressesDto =
         dao.getContactWithAddresses(id).toDto()
 
+    override suspend fun getAddress(id: String): AddressDto =
+        dao.getAddress(id).toDto()
+
     override suspend fun insert(contact: ContactDto) = dao.insert(contact.toEntity())
     override suspend fun insert(address: AddressDto) = dao.insert(address.toEntity())
 

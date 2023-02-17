@@ -24,6 +24,10 @@ abstract class ContactDAO {
     @Query("SELECT * FROM Contact WHERE id = :id")
     abstract suspend fun getContactWithAddresses(id: String): ContactWithAddresses
 
+    @Transaction
+    @Query("SELECT * FROM Address WHERE id = :id")
+    abstract suspend fun getAddress(id: String): Address
+
     @Insert
     abstract suspend fun insert(vararg contacts: Contact)
     @Insert

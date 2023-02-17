@@ -8,6 +8,8 @@ interface ContactRepository {
 
     suspend fun getContactWithAddresses(id: String): ContactWithAddressesDto
 
+    suspend fun getAddress(id: String): AddressDto
+
     suspend fun insert(contact: ContactDto)
     suspend fun insert(address: AddressDto)
 

@@ -7,10 +7,13 @@ import yuan.eric.hw2.repository.AddressDto
 
 @Composable
 fun AddressList(
-    addresses: List<AddressDto>
+    addresses: List<AddressDto>,
+    onAddressClick: (String) -> Unit,
 ) {
     SimpleText(text = "Addresses")
     addresses.forEach {
-        SimpleText(text = "${it.type} ${it.street}")
+        SimpleText(text = "${it.type} ${it.street}") {
+            onAddressClick(it.id)
+        }
     }
 }

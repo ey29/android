@@ -16,3 +16,11 @@ internal fun Address.toDto() =
     AddressDto(id = id, type = type, street = street, city = city, state = state, zip = zip, contactId = contactId)
 internal fun AddressDto.toEntity() =
     Address(id = id, type = type, street = street, city = city, state = state, zip = zip, contactId = contactId)
+
+//data class AddressesDto(
+//    val address: AddressDto,
+//)
+//
+//internal fun Address.toDto() = AddressesDto (
+//    address = address.toDto(),
+//)

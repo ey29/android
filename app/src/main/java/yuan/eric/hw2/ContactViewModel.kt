@@ -16,6 +16,9 @@ object AddressList: Screen
 data class ContactScreen(
     val id: String
 ): Screen
+data class AddressScreen(
+    val id: String
+): Screen
 
 class ContactViewModel(application: Application) : AndroidViewModel(application) {
     private val repository: ContactRepository = ContactDatabaseRepository(application)
@@ -28,6 +31,9 @@ class ContactViewModel(application: Application) : AndroidViewModel(application)
 
     suspend fun getContactWithAddresses(id: String) =
         repository.getContactWithAddresses(id)
+
+    suspend fun getAddress(id: String) =
+        repository.getAddress(id)
 
     fun switchTo(screen: Screen) {
         this.screen = screen
