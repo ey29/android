@@ -1,0 +1,21 @@
+package yuan.eric.hw2.repository
+
+import kotlinx.coroutines.flow.Flow
+
+interface ContactRepository {
+    val contactsFlow: Flow<List<ContactDto>>
+    val addressesFlow: Flow<List<AddressDto>>
+
+    suspend fun getContactWithAddresses(id: String): ContactWithAddressesDto
+
+    suspend fun insert(contact: ContactDto)
+    suspend fun insert(address: AddressDto)
+
+    suspend fun update(contact: ContactDto)
+    suspend fun update(address: AddressDto)
+
+    suspend fun delete(contact: ContactDto)
+    suspend fun delete(address: AddressDto)
+
+    suspend fun resetDatabase()
+}
